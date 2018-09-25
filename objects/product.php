@@ -18,9 +18,8 @@ class Product{
     public function __construct($db){
         $this->conn = $db;
     }
-}
 
-// read products
+    // read products
 function read(){
  
     // select all query
@@ -41,5 +40,6 @@ function read(){
     $stmt->execute();
  
     return $stmt;
+}
 }
 ?>
