@@ -16,7 +16,7 @@ function read(){
     // select all query
    /* if(isset($_REQUEST['typeKey']))
     {*/
-        $query = "select arcontent.arcontent_id AS id, arcontent.arcontent_name AS name, arcontent.arcontent_image_anchor_url AS imageAnchorUrl, arcontent.arcontent_share_url AS shareUrl FROM arcontent WHERE arcontent.arcontent_edition_id = 1";
+        $query = "select arcontent.arcontent_id AS id, arcontent.arcontent_name AS name, arcontent.arcontent_image_anchor_url AS imageAnchorUrl, arcontent.arcontent_share_url AS shareUrl FROM arcontent WHERE arcontent.arcontent_edition_id = '" .$_REQUEST['id']. "'";
    /* }
     else
     {
