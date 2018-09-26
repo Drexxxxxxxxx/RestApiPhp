@@ -13,7 +13,7 @@ $db = $database->getConnection();
  
 // initialize object
 $product = new Arcontent($db);
- 
+
 // query products
 $stmt = $product->read();
 $num = $stmt->rowCount();
@@ -38,20 +38,40 @@ if($num>0){
         // this will make $row['name'] to
         // just $name only
         extract($row);
+        $productcard = new Arcontent($db);
+        $stmtcard = $productcard->readcard($row['id']);
+        $numcard = $stmtcard->rowCount();
+        $cardarray2 = array();
+        if($numcard>0){
+            while ($rowcard = $stmtcard->fetch(PDO::FETCH_ASSOC)){
+                extract($rowcard);
+                $arcarditem=array(
+                    "title" => $rowcard['title'],
+                    "description" => $rowcard['description'],
+                    "Type" => $rowcard['Type'],
+                    "Url" => $rowcard['Url'],
+                    "Androidstoreurl" => $rowcard['Androidstoreurl'],
+                    "IosStoreUrl " => $rowcard['IosStoreUrl']
+                );
+                array_push($cardarray2, $arcarditem);
+            } 
+        }
 
-        $mediaitem=array(
-            "type" => $row['type'],
-            "resourceUrl" => $row['resourceUrl'],
-        );
-        $arcarditem=array(
-            "title" => $row['title'],
-            "description" => $row['description'],
-            "Type" => $row['Type'],
-            "Url" => $row['Url'],
-            "Androidstoreurl" => $row['Androidstoreurl'],
-            "IosStoreUrl " => $row['IosStoreUrl']
-        );
-      
+        $productmedia = new Arcontent($db);
+        $stmtmedia = $productmedia->readmedia($row['id']);
+        $numcardmedia = $stmtmedia->rowCount();
+        $mediaarray2 = array();
+        if($numcardmedia>0){
+            while ($rowmedia = $stmtmedia->fetch(PDO::FETCH_ASSOC)){
+                extract($rowmedia);
+                $mediaitem=array(
+                    "type" => $rowmedia['type'],
+                    "resourceUrl" => $rowmedia['resourceUrl'],
+                );
+                array_push($mediaarray2, $mediaitem);
+            } 
+        }
+          
 
        /* array_push($mediaitem_arr["mediaObjects"], $mediaitem);
 
@@ -64,8 +84,8 @@ if($num>0){
             "name" => $row['name'],
             "imageAnchorUrl" => $row['imageAnchorUrl'],
             "shareUrl" => $row['shareUrl'],   
-            "mediaObjects" => $mediaitem,
-            "card" => $arcarditem
+            "mediaObjects" => $mediaarray2,
+            "card" => $cardarray2
         );
 
         array_push($products_arr["Arcontent"], $product_item);
