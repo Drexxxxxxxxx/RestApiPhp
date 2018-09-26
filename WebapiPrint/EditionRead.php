@@ -4,15 +4,15 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
  
 // include database and object files
-include_once '../config/database.php';
-include_once '../objects/product.php';
+include_once '../Bd/database.php';
+include_once '../Querys/EditionQuery.php';
  
 // instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
  
 // initialize object
-$product = new Product($db);
+$product = new Edition($db);
  
 // query products
 $stmt = $product->read();
@@ -23,7 +23,7 @@ if($num>0){
  
     // products array
     $products_arr=array();
-    $products_arr["records"]=array();
+    $products_arr["Edition"]=array();
  
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -35,13 +35,14 @@ if($num>0){
         extract($row);
  
         $product_item=array(
-            "client_id" => $row['client_id'],
-            "client_name" => $row['client_name'],
-            "client_key" => $row['client_key'],
-            "client_enabled" => $row['client_enabled']
+            "id" => $row['id'],
+            "imageAnchorUrl" => $row['imageAnchorUrl'],
+            "title" => $row['title'],
+            "editionNr" => $row['editionNr'],
+            "date" => $row['date']
         );
  
-        array_push($products_arr["records"], $product_item);
+        array_push($products_arr["Edition"], $product_item);
     }
  
     echo json_encode($products_arr);
@@ -49,7 +50,7 @@ if($num>0){
  
 else{
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "No Editions found.")
     );
 }
 ?>
