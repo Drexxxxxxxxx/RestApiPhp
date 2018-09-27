@@ -23,7 +23,7 @@ if($num>0){
  
     // products array
     $products_arr=array();
-    $products_arr["Edition"]=array();
+    $products_arr["editions"]=array();
  
     // retrieve our table contents
     // fetch() is faster than fetchAll()
@@ -42,7 +42,7 @@ if($num>0){
             "date" => $row['date']
         );
  
-        array_push($products_arr["Edition"], $product_item);
+        array_push($products_arr["editions"], $product_item);
     }
  
     echo json_encode($products_arr);
