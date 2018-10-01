@@ -76,7 +76,8 @@ if($num>0){
 
         array_push($arcarditem_arr["card"], $arcarditem);*/
 
-
+        if($row['imageAnchorUrl'])
+        {
         $product_item=array(
             "id" => $row['id'],
             "name" => $row['name'],
@@ -85,6 +86,17 @@ if($num>0){
             "mediaObjects" => $mediaarray2,
             "card" => $cardarray2
         );
+        }
+        else{
+            $product_item=array(
+                "id" => $row['id'],
+                "name" => $row['name'],
+                "imageAnchorUrl" => null,
+                "shareUrl" => $row['shareUrl'],   
+                "mediaObjects" => $mediaarray2,
+                "card" => $cardarray2
+            );
+        }
         array_push($products_arr["Arcontent"], $product_item);
     }
  

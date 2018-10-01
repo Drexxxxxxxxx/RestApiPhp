@@ -33,7 +33,8 @@ if($num>0){
         // this will make $row['name'] to
         // just $name only
         extract($row);
- 
+        if($row['imageAnchorUrl'])
+        {
         $product_item=array(
             "id" => $row['id'],
             "imageAnchorUrl" => "http://i9ar.innovagencyhost.com/bo/".$row['imageAnchorUrl'],
@@ -41,6 +42,16 @@ if($num>0){
             "editionNr" => $row['editionNr'],
             "date" => $row['date']
         );
+        }
+        else{
+            $product_item=array(
+                "id" => $row['id'],
+                "imageAnchorUrl" => null,
+                "title" => $row['title'],
+                "editionNr" => $row['editionNr'],
+                "date" => $row['date']
+            ); 
+        }
  
         array_push($products_arr["Edition"], $product_item);
     }
