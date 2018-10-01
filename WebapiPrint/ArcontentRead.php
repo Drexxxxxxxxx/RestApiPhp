@@ -17,7 +17,6 @@ $product = new Arcontent($db);
 // query products
 $stmt = $product->read();
 $num = $stmt->rowCount();
- 
 // check if more than 0 record found
 if($num>0){
  
@@ -78,16 +77,14 @@ if($num>0){
         array_push($arcarditem_arr["card"], $arcarditem);*/
 
 
-
         $product_item=array(
             "id" => $row['id'],
             "name" => $row['name'],
-            "imageAnchorUrl" => $row['imageAnchorUrl'],
+            "imageAnchorUrl" => "http://i9ar.innovagencyhost.com/bo/".$row['imageAnchorUrl'],
             "shareUrl" => $row['shareUrl'],   
             "mediaObjects" => $mediaarray2,
             "card" => $cardarray2
         );
-
         array_push($products_arr["Arcontent"], $product_item);
     }
  
@@ -96,7 +93,7 @@ if($num>0){
  
 else{
     echo json_encode(
-        array("message" => "No Editions found.")
+        array("message" => "No ArContent found.")
     );
 }
 ?>

@@ -36,7 +36,7 @@ if($num>0){
  
         $product_item=array(
             "id" => $row['id'],
-            "imageAnchorUrl" => $row['imageAnchorUrl'],
+            "imageAnchorUrl" => "http://i9ar.innovagencyhost.com/bo/".$row['imageAnchorUrl'],
             "title" => $row['title'],
             "editionNr" => $row['editionNr'],
             "date" => $row['date']
