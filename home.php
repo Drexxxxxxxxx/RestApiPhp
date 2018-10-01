@@ -7,8 +7,5 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Codigo Enviu</p>
-    <h1> MIGUEL FEIO </h1>
-    <h1>9177tire</h1>
 </body>
 </html>

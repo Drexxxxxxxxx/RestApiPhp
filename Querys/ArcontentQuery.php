@@ -16,7 +16,7 @@ function read(){
     // select all query
    /* if(isset($_REQUEST['typeKey']))
     {*/
-        $query = "select arcontent.arcontent_id AS id, arcontent.arcontent_name AS name, arcontent.arcontent_image_anchor_url AS imageAnchorUrl, arcontent.arcontent_share_url AS shareUrl FROM arcontent WHERE arcontent.arcontent_edition_id = '" .$_REQUEST['id']. "'";
+        $query = "select arcontent_id AS id, arcontent_name AS name, arcontent_image_anchor_url AS imageAnchorUrl, arcontent_share_url AS shareUrl FROM ARContent WHERE arcontent_edition_id = '" .$_REQUEST['id']. "'";
    /* }
     else
     {
@@ -36,7 +36,7 @@ function readcard($id){
     // select all query
    /* if(isset($_REQUEST['typeKey']))
     {*/
-        $query = "select arcontentcard.arcontentcard_title AS title, arcontentcard.arcontentcard_description AS description, arcontentcard.arcontentcard_type AS Type, arcontentcard.arcontentcard_url AS Url, arcontentcard.arcontentcard_android_store_url AS Androidstoreurl, arcontentcard.arcontentcard_ios_store_url AS IosStoreUrl FROM arcontentcard WHERE arcontentcard.arcontentcard_arcontent_id = '" .$id. "'";
+        $query = "select arcontentcard_title AS title, arcontentcard_description AS description, arcontentcard_type AS Type, arcontentcard_url AS Url, arcontentcard_android_store_url AS Androidstoreurl, arcontentcard_ios_store_url AS IosStoreUrl FROM Arcontentcard WHERE arcontentcard_arcontent_id = '" .$id. "'";
    /* }
     else
     {
@@ -56,7 +56,7 @@ function readmedia($id){
     // select all query
    /* if(isset($_REQUEST['typeKey']))
     {*/
-        $query = "select armedia.armedia_type AS type, armedia.armedia_url AS resourceUrl FROM armedia WHERE armedia_arcontent_id = '" .$id. "'";
+        $query = "select armedia_type AS type, armedia_url AS resourceUrl FROM Armedia WHERE armedia_arcontent_id = '" .$id. "'";
    /* }
     else
     {
